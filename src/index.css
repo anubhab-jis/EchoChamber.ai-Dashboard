@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #06070d;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Custom scrollbar */
+.echo-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.echo-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.echo-scroll::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 9999px;
+}
+.echo-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.45);
+}
+
+@keyframes echo-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.92); }
+}
+.echo-pulse {
+  animation: echo-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes echo-fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.echo-fade-up {
+  animation: echo-fade-up 0.35s ease-out both;
+}
+
+@keyframes echo-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.echo-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(148, 163, 184, 0.06) 25%,
+    rgba(148, 163, 184, 0.16) 37%,
+    rgba(148, 163, 184, 0.06) 63%
+  );
+  background-size: 200% 100%;
+  animation: echo-shimmer 1.6s linear infinite;
+}
+
+/* Spatial Computing utilities */
+.bg-radial {
+  background-image: radial-gradient(
+    ellipse at center,
+    var(--tw-gradient-from, #18181b) 0%,
+    var(--tw-gradient-via, #0a0a0a) 50%,
+    var(--tw-gradient-to, #000000) 100%
+  );
+}
+
+.echo-groove {
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.echo-fluid {
+  position: relative;
+  background-image: linear-gradient(to right, #6366f1, #22d3ee);
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.5);
+}
+
+.echo-fluid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  pointer-events: none;
+}
